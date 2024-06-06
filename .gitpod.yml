@@ -1,23 +1,17 @@
 additionalRepositories:
-    - url: https://github.com/mileiq/mdlrest
-      checkoutLocation: mdlrest
-    - url: https://github.com/mileiq/dashboard-web-v2-app
-      checkoutLocation: dashboard
+  - url: https://github.com/mileiq/mdlrest
+    checkoutLocation: mdlrest
+  - url: https://github.com/mileiq/dashboard-web-v2-app
+    checkoutLocation: dashboard
 
 tasks:
     - name: mdlrest
-      # change working directory as per configured in `checkoutLocation`
-      # which is configured above as `/workspaces/backend`
       before: |
           cd ../mdlrest
       init: |
           cp .env.sample .env
       image:
         file: Dockerfile
-          
-
-      # changing of working directory is not required as these tasks will
-      # by default by executed in `/workspaces/demo-multi-repo-frontend`
     - name: dashboard
       init: |
           echo npm install
