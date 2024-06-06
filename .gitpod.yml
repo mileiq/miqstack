@@ -1,26 +1,37 @@
 additionalRepositories:
-  - url: https://github.com/mileiq/mdlrest
-    checkoutLocation: mdlrest
-  - url: https://github.com/mileiq/dashboard-web-v2-app
-    checkoutLocation: dashboard
+  - url: https://github.com/gitpod-io/demo-multi-repo-backend
+     # checkoutLocation is optional and relative to /workspaces.
+     # by default the location defaults to the repository name.
+    checkoutLocation: backend
+
+## The 'tasks' section defines how Gitpod prepares and builds this project
+## or how Gitpod can start development servers. With Gitpod, there are three
+## types of tasks:
+##
+## - before: Use this for tasks that need to run before init and before command. 
+## - init: Use this to configure prebuilds of heavy-lifting tasks such as
+##         downloading dependencies or compiling source code.
+## - command: Use this to start your database or application when the workspace starts.
+##
+## Learn more about these tasks at 'https://www.gitpod.io/docs/config-start-tasks'
 
 tasks:
-    - name: mdlrest
-      # change working directory as per configured in `checkoutLocation`
-      # which is configured above as `/workspaces/backend`
-      before: |
-          cd ../mdlrest
-      init: |
-          cp .env.sample .env
-      image:
-        file: Dockerfile
-          
+  - name: backend
+    # change working directory as per configured in `checkoutLocation`
+    # which is configured above as `/workspaces/backend`
+    before: |
+      cd ../backend
+    init: |
+      echo npm install
+      echo npm run build
+    command: |
+      echo npm run dev
 
-      # changing of working directory is not required as these tasks will
-      # by default by executed in `/workspaces/demo-multi-repo-frontend`
-    - name: dashboard
-      init: |
-          echo npm install
-          echo npm run build
-      command: |
-          echo npm run dev
+    # changing of working directory is not required as these tasks will
+    # by default by executed in `/workspaces/demo-multi-repo-frontend`
+  - name: frontend
+    init: |
+      echo npm install
+      echo npm run build
+    command: |
+      echo npm run dev
