@@ -1,8 +1,8 @@
 additionalRepositories:
-  - url: https://github.com/gitpod-io/demo-multi-repo-backend
+  - url: https://github.com/mileiq/mdlrest
      # checkoutLocation is optional and relative to /workspaces.
      # by default the location defaults to the repository name.
-    checkoutLocation: backend
+    checkoutLocation: mdlrest
 
 ## The 'tasks' section defines how Gitpod prepares and builds this project
 ## or how Gitpod can start development servers. With Gitpod, there are three
@@ -16,16 +16,15 @@ additionalRepositories:
 ## Learn more about these tasks at 'https://www.gitpod.io/docs/config-start-tasks'
 
 tasks:
-  - name: backend
+  - name: mdlrest
     # change working directory as per configured in `checkoutLocation`
     # which is configured above as `/workspaces/backend`
     before: |
-      cd ../backend
+      cd ../mdlrest
     init: |
-      echo npm install
-      echo npm run build
-    command: |
-      echo npm run dev
+      cp .env.sample .env
+    image:
+      file: Dockerfile
 
     # changing of working directory is not required as these tasks will
     # by default by executed in `/workspaces/demo-multi-repo-frontend`
