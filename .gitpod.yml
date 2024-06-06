@@ -1,8 +1,8 @@
 additionalRepositories:
-    - url: https://github.com/mileiq/mdlrest
-      checkoutLocation: mdlrest
-    - url: https://github.com/mileiq/dashboard-web-v2-app
-      checkoutLocation: dashboard
+  - url: https://github.com/mileiq/mdlrest
+    checkoutLocation: mdlrest
+  - url: https://github.com/mileiq/dashboard-web-v2-app
+    checkoutLocation: dashboard
 
 tasks:
     - name: mdlrest
